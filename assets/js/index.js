@@ -99,7 +99,7 @@ const escapeHtml = (text) => {
 
 const fetchLeaderboard = async () => {
     try {
-        const response = await fetch('https://api.shapes.lol/clb');
+        const response = await fetch('http://212.227.166.131:10185/api/stats');
         const data = await response.json();
         displayTopThree(data);
     } catch (error) {
