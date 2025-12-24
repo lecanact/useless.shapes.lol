@@ -109,7 +109,7 @@ const fetchLeaderboard = async () => {
 
 const fetchBotInfo = async () => {
     try {
-        const response = await fetch('https://212.227.166.131:10185/api/stats');
+        const response = await fetch('http://212.227.166.131:10185/api/stats'); // Won't work since it's running on http :(
         const data = await response.json();
         
         const usersEl = document.getElementById('users');
@@ -202,9 +202,9 @@ const fetchStatsAlternative = async () => {
 
 // Initialize data fetching
 console.log('Initializing data fetching');
-fetchLeaderboard();
+//fetchLeaderboard();
 fetchBotInfo();
 
 // intervals for updating data
-setInterval(fetchLeaderboard, 15000);
-setInterval(fetchBotInfo, 1000);
+//setInterval(fetchLeaderboard, 15000);
+setInterval(fetchBotInfo, 15000);
