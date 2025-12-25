@@ -99,7 +99,7 @@ const escapeHtml = (text) => {
 
 const fetchLeaderboard = async () => {
     try {
-        const response = await fetch('http://212.227.166.131:10185/api/stats'); // This is not gonna work as the endpoint doesn't return the leaderboard in the same format.
+        const response = await fetch('https://api.useless.spook.bio/api/leaderboard'); // This is not gonna work as the endpoint doesn't return the leaderboard in the same format.
         const data = await response.json();
         displayTopThree(data);
     } catch (error) {
@@ -109,20 +109,8 @@ const fetchLeaderboard = async () => {
 
 const fetchBotInfo = async () => {
     try {
-        //const response = await fetch('https://212.227.166.131:10185/api/stats');
-        function reqListener() {
-            console.log(this.response);
-            data = this.response;
-            return data;
-        };
-        let data;
-        const req = new XMLHttpRequest();
-        req.responseType = "json";
-        req.addEventListener("load", reqListener);
-        req.open("GET", "http://212.227.166.131:10185/api/stats");
-        const data_test = req.send();
-        console.log(data_test);
-        console.log(data_test.response);
+        const response = await fetch('https://api.useless.spook.bio/api/stats');
+        const data = response.json();
         
         const usersEl = document.getElementById('users');
         const serversEl = document.getElementById('servers');
@@ -159,8 +147,8 @@ const fetchBotInfo = async () => {
         }
     } catch (error) {
         console.error('Failed to fetch bot info:', error);
-        // Fallback to alternative endpoints
-        fetchStatsAlternative();
+        // Fallback to alternative endpoints (Not needed)
+        //fetchStatsAlternative();
     }
 };
     
